@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('pull-from-github-build') {
             steps {
-                sh '/Users/patrickryan/.nvm/versions/node/v10.12.0/bin/npm install'
+                sh 'npm install'
             }
 			post {
 				failure {
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('execute-unit-tests') {
             steps{
-               sh '/Users/patrickryan/.nvm/versions/node/v10.12.0/bin/npm test'
+               sh 'npm test'
             }
         }
         stage('run-program') {
@@ -29,13 +29,13 @@ pipeline {
                 }
             }
             steps{
-               sh '/Users/patrickryan/.nvm/versions/node/v10.12.0/bin/node index.js -c $city'
+               sh 'node index.js -c $city'
             }
         }
     }
     post { 
         always { 
-           sh "/Users/patrickryan/.nvm/versions/node/v10.12.0/bin/npm run cleanup"
+           sh "npm run cleanup"
         }
     }
 }

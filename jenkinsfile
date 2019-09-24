@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('pull-from-github-build') {
             steps {
-                npm install
+                sh "npm install"
             }
 			post {
 				failure {
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('execute-unit-tests') {
             steps{
-               npm test
+               sh "npm test"
             }
         }
         stage('run-program') {
@@ -29,13 +29,13 @@ pipeline {
                 }
             }
             steps{
-               node index.js -c $city
+               sh "node index.js -c $city"
             }
         }
     }
     post { 
         always { 
-           npm run cleanup
+           sh "npm run cleanup"
         }
     }
 }

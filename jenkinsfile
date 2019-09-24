@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('pull-from-github-build') {
             steps {
-                sh "npm install"
+                sh 'npm install'
             }
 			post {
 				failure {
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('execute-unit-tests') {
             steps{
-               sh "npm test"
+               sh 'npm test'
             }
         }
         stage('run-program') {
@@ -29,7 +29,7 @@ pipeline {
                 }
             }
             steps{
-               sh "node index.js -c $city"
+               sh 'node index.js -c $city'
             }
         }
     }

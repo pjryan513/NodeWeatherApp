@@ -1,6 +1,7 @@
 // Pipeline lab end of chapter 3
 pipeline {
     agent any
+    tools {nodejs "node12"}
     stages {
         stage('pull-from-github-build') {
             steps {

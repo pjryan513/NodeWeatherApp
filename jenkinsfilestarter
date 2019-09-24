@@ -1,0 +1,37 @@
+// Pipeline lab end of chapter 3
+pipeline {
+	// Have the pipeline run on any available agent
+    ???????
+	
+	Code the following stages in the order listed:
+	
+	1: 'pull-from-github-build'
+		This stage has a single step containing the code 
+					bat "npm install"
+		Include code that prints 'I Failed to build (sob)' 
+		when the step fails
+		
+	2: 'execute-unit-tests'
+		This stage has a single step containing the code 
+					bat "npm test"
+	
+	3: 'run-program'
+		This stage has a two directives:
+			An input directive that:
+				Issues the message "Enter a city"
+				The label on the ok button should read OK
+				The value to be input is saved in a variable
+				named city
+				The default input value is Portland
+				The description of the value is "Whats the weather there?"
+		
+		The other directive is a single step containing the code 
+					 bat "node index.js -c ???????"
+		where ??????? is an expression that resolves to a 
+		reference for the input value you entered in the 
+		preceding dialog
+		
+	4: 	The pipeline should always execute (even if any/all
+		steps fail) the code 'bat "npm run cleanup"'
+		
+}

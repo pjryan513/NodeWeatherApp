@@ -1,0 +1,16 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "For Lab at end of Chapter 3",
+  "main": "index.js",
+  "scripts": {
+    "cleanup": "echo \"cleaning up(not really)\" && exit 0",
+    "test":    "echo \"unit testing (not really)\" && exit 0"   
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.0",
+    "yargs": "^14.0.0"
+  }
+}

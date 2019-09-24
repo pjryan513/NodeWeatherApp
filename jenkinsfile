@@ -1,0 +1,41 @@
+// Pipeline lab end of chapter 3
+pipeline {
+    agent any
+    stages {
+        stage('pull-from-github-build') {
+            steps {
+                bat "npm install"
+            }
+			post {
+				failure {
+					echo "I failed to build (sob)"
+				}
+			}
+        }
+        stage('execute-unit-tests') {
+            steps{
+               bat "npm test"
+            }
+        }
+        stage('run-program') {
+            input {
+                message "Enter a city"
+                ok "OK"
+                submitter "Lou Marco"
+                parameters {
+                    string(name: 'city', 
+ 					    defaultValue: 'Portland', 
+					    description: 'Whats the weather there?')
+                }
+            }
+            steps{
+               bat "node index.js -c $city"  
+            }
+        }
+    }
+    post { 
+        always { 
+           bat "npm run cleanup"
+        }
+    }
+}

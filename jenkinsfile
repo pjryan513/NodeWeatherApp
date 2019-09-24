@@ -29,7 +29,7 @@ pipeline {
                 }
             }
             steps{
-               sh 'node index.js -c $city'
+               sh '/Users/patrickryan/.nvm/versions/node/v10.12.0/bin/node index.js -c $city'
             }
         }
     }

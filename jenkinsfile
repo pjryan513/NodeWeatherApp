@@ -3,17 +3,18 @@ pipeline {
     agent any
     tools {nodejs "node12"}
     stages {
-        stage('Sonar Qube Analysis') {
+        stage('Sonarqube Analysis') {
             steps {
                 script {
-                    scannerHome = tool 'SonarQube';
+                        scannerHome = tool 'SonarQube';
+                    }
                 }
-            }
-            withSonarQubeEnv('sonarqube') {
-                sh "${scannerHome}/bin/sonar.sh"
-            }
-            timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
+                withSonarQubeEnv('sonarqube') {
+                    sh "${scannerHome}/bin/sonar.sh"
+                }
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
         stage('pull-from-github-build') {
